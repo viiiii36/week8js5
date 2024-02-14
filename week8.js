@@ -8,11 +8,11 @@ class Tool{
     constructor(type,ID,futureCalibration){
         this.type=type;
         this.ID=ID;
-        this.futureCalibration=futureCalibration;
+        this.futureCalibration=new Date(futureCalibration);
     }
     describe(){
         //getting the timestamp at the moment the code runs
-        let timestamp = Date();
+        let timestamp = new Date();
         //check if the tool is valid to use or it needs to be calibrated
         if (this.futureCalibration>timestamp){
             console.log(`The ${this.type} with ID number ${this.ID} is valid to use`);
@@ -22,7 +22,7 @@ class Tool{
 }
 //Showing the current date
 console.log(Date());
-//Option to add new tool to tool list
+//Option to add new tool item to tool list
 class List{
     constructor(){
       this.inventory=[];
