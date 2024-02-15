@@ -70,6 +70,7 @@ submitNewTool(){
   let newTool= new Tool(type,ID,futureCalibration);
   this.list.push(newTool);
 }
+//Show a list of available tools and creating indexes 
 showInventory(){
       let listString = '';
       for (let i=0;i<this.list.length;i++)
@@ -79,30 +80,23 @@ showInventory(){
       }
       alert(listString);
 }
+//delete a tool from the array by taking index from the prompt command
 deleteTool(){
   let index = prompt('Enter the index of tool you want to delete ');
   if (index > -1 && index < this.list.length) {
   this.list.splice(index,1);
 }
 }
+//when user check out the tool, it's going to prompt if the tool is usable or not. If it can be used then the system 
+//removes it from the inventory list
 checkingOut(){
   let index = prompt('Enter the of tool you want to checkout ');
   if (index > -1 && index < this.list.length) {
   this.list[index].describe();
   if (this.futureCalibration>timestamp){
-    this.teams.splice(index,1);
-  menu.start();
-}
+    this.teams.splice(index,1);}
 }
 }
 }
 let menu=new Task()
 menu.start()
-/*let tool1=new Tool("pin",45,"Jan 1, 2024");
-let tool2=new Tool("gage",12,"March 1, 2024");
-  tool1.describe();
-  tool2.describe();
-  let list=new List();
-  list.addTool(tool1);
-  list.addTool(tool2);
-  list.displayToolList();*/
