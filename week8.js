@@ -44,7 +44,7 @@ start(){
     case '4':
       this.checkingOut();
       break; 
-    default: selection =0;
+    default: selection=0;
     }
     //keep popping up the tasks list after user chose the task action
     selection=this.showAllTasks();
@@ -90,11 +90,13 @@ deleteTool(){
 //when user check out the tool, it's going to prompt if the tool is usable or not. If it can be used then the system 
 //removes it from the inventory list
 checkingOut(){
-  let index = prompt('Enter the of tool you want to checkout ');
+  let index = prompt('Enter the index of tool you want to checkout ');
   if (index > -1 && index < this.list.length) {
-  this.list[index].describe();
-  if (this.futureCalibration>timestamp){
-    this.teams.splice(index,1);}
+    this.list[index].describe();
+    if (this.list[index].futureCalibration>new Date()){
+      this.list.splice(index,1);
+      this.showInventory();
+}
 }
 }
 }
